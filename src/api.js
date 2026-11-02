@@ -3,11 +3,11 @@ async function request(path, options) {
   try {
     response = await fetch(path, options)
   } catch {
-    throw new Error('API 서버에 연결하지 못했습니다. npm run dev가 실행 중인지 확인하세요.')
+    throw new Error('API 서버에 연결하지 못했습니다. 로컬에서는 npm run dev가 실행 중인지 확인하세요.')
   }
   if (response.status === 204) return null
   const body = await response.json().catch(() => null)
-  if (!response.ok) throw new Error(body?.error ?? 'API 서버에 연결하지 못했습니다. npm run dev가 실행 중인지 확인하세요.')
+  if (!response.ok) throw new Error(body?.error ?? 'API 서버에 연결하지 못했습니다. 로컬에서는 npm run dev가 실행 중인지 확인하세요.')
   return body
 }
 
